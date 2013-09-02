@@ -10,9 +10,33 @@
 /*
   In order, we hide:
     - mobile-only elements
+    - horizontal lines, except for the unread line
+    - old board navigation
+    - posting mode: reply
+    - board title and text boards
+    - quick links [return] [catalog]
+    - original post form
+    - advertisements
+    - post deleter and style picker
+    - copyright footer
+    - checkboxes for posts (use the menu)
 */
 
-.mobile {
+/*
+  NOTE: there are some stuff 4chan X hides, we'd hide that here too
+*/
+
+.mobile,
+hr:not(#unread-line),
+#boardNavDesktop, #boardNavDesktopFoot,
+.postingMode
+.boardBanner,
+.navLinks,
+#postForm,
+.center, .ad-plea,
+.bottomCtrl,
+#absbot,
+.postInfo > input[value=delete] {
   display: none;
 }
 
@@ -49,7 +73,7 @@
 }
 
 html {
-  font: 1em/1.4 sans-serif;
+  font: 1em/1.5 sans-serif;
   color: #3d3d3d;
   background-color: #fafafa;
   overflow-y: scroll;
