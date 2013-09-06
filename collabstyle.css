@@ -29,7 +29,7 @@
 .mobile,
 hr:not(#unread-line),
 #boardNavDesktop, #boardNavDesktopFoot,
-.postingMode
+.postingMode,
 .boardBanner,
 .navLinks,
 #postForm,
@@ -120,7 +120,7 @@ strong,
 */
 
 blockquote {
-  margin: 0;
+  margin: .5em 0 0 .5em;
 }
 
 /*
@@ -268,5 +268,164 @@ textarea {
   clear: both;
 }
 */
+
+.postContainer::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.board {
+  max-width: 960px;
+  margin: auto;
+  position: relative;
+}
+
+.thread {
+  position: relative;
+}
+
+.postContainer {
+  background-color: #fafafa;
+  padding: .75em 1.5em;
+  position: relative;
+}
+
+.summary,
+.menu-button,
+.hide-thread-button,
+.hide-reply-button {
+  position: absolute;
+  right: 0;
+  z-index: 2;
+}
+
+.fileThumb {
+  float: left;
+  margin: .5em .5em .5em 0;
+}
+
+.fileInfo,
+.abbr,
+.dateTime {
+  color: #999;
+}
+
+.quote {
+  color: olive;
+}
+
+/*
+  4chan X Specific CSS
+*/
+
+.field {
+  color: #696969;
+  border: 1px solid #ababab;
+  padding: .1em;
+}
+
+.field:hover,
+.field:focus {
+  color: #3d3d3d;
+  border-color: #999;
+}
+
+.field::-moz-placeholder,
+.field:hover::-moz-placeholder {
+    color: #ababab;
+}
+
+/*#sidebar-toggle {
+  content: '';
+  position: fixed;
+  top: 0.25em;
+  left: 0;
+  width: 1em;
+  height: 0.125em;
+  border-top: 0.375em double #000;
+  border-bottom: 0.125em solid #000;
+  cursor: pointer;
+  transition: all .4s;
+}*/
+#sidebar-toggle {
+  -moz-box-sizing: content-box;
+       box-sizing: content-box;
+  content: '';
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  width: 2rem;
+  height: .25rem;
+  border-top: .75rem double #3d3d3d;
+  border-bottom: .25rem solid #3d3d3d;
+  cursor: pointer;
+}
+
+#sidebar {
+  width: 400px;
+  position: fixed;
+  height: 100%;
+  background-color: #1b1f41;
+  top: 0;
+  right: 0;
+  transform: translateX(400px);
+  transition: transform .25s;
+  overflow-y: scroll;
+}
+
+.sidebar-active:root #sidebar {
+  transform: translateX(0);
+}
+
+#delform {
+  margin-right: 0;
+  transition: margin .25s;
+}
+
+.sidebar-active:root #delform {
+  margin-right: 400px;
+}
+
+#header {
+  font-size: 0;
+  color: transparent;
+}
+
+#shortcuts { display: none /* for now */ }
+
+#header a {
+  font-size: 1rem !important;
+  color: #d8e8f0 !important;
+  display: block;
+  text-align: center;
+  padding: .5em 0;
+  border-bottom: 1px solid rgba(0,0,0,.25);
+  background: none;
+  transition: all .25s;
+}
+
+#header a:hover {
+  background: #0a1040;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
