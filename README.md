@@ -7,6 +7,17 @@ this is an attempt at creating a *super sexy* 4chan userstyle with [@offlineric]
 
 atm this is __SUPER ALPHA VERSION 0.000002__ where it's more just eric and i experimenting with ideas (some on his own fork).
 
+__cool, gimme gimme gimme!!!___
+
+for this style to work as intended, i recommend blocking the default stylesheets. how? through adblock plus, add this custom filter:
+
+(add-ons > adblock > options > filter preferences > custom filters tab)
+
+```
+*//static.4chan.org/image/title/*
+$stylesheet,domain=boards.4chan.org
+```
+
 here is a quick preview:
 
 ![4chan on steroids](http://i.imgur.com/Z4UR4dR.png)
