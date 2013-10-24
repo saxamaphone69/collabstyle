@@ -5,7 +5,11 @@ __cool, so what is this?__
 
 this is an attempt at creating a *super sexy* 4chan userstyle with [@offlineric](https://github.com/offlineric)!
 
-atm this is __SUPER ALPHA VERSION 0.000001__ where it's more just eric and i experimenting with ideas (some on his own fork).
+atm this is __SUPER ALPHA VERSION 0.000002__ where it's more just eric and i experimenting with ideas (some on his own fork).
+
+here is a quick preview:
+
+![4chan on steroids](http://i.imgur.com/Z4UR4dR.png)
 
 __cool, so what will this be?__
 
