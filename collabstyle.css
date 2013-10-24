@@ -1,38 +1,45 @@
+/*
+  When we @import using Stylish, we have to
+  have it outside the @-moz-document rule. In
+  this case, we are loading the "Source Sans"
+  font from Google's server.
+*/
+
+/*
+@import url('http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700|Source+Code+Pro:300');
+*/
+
+/*
+  With a bit of trickery (using Fontello) I'm
+  able to create a web-icon font with only
+  the icons I need from the Font Awesome series.
+*/
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('data:application/font-woff;base64,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') format('woff');
+}
+
 @-moz-document domain("boards.4chan.org") {
 
 #removestyle {
   position: fixed;
-  top: 4rem;
-  right: 4rem;
+  bottom: 4rem;
+  left: 4rem;
   padding: 1em;
+-moz-appearance: none;
+border: 0;
+  background: #e3e3e3;
 }
-
-/*
-  In order, we hide:
-    - mobile-only elements
-    - horizontal lines, except for the unread line
-    - old board navigation
-    - posting mode: reply
-    - board title and text boards
-    - quick links [return] [catalog]
-    - original post form
-    - advertisements
-    - post deleter and style picker
-    - copyright footer
-    - checkboxes for posts (use the menu)
-*/
-
-/*
-  NOTE: there are some stuff 4chan X hides, we'd hide that here too
-*/
 
 .mobile,
 hr:not(#unread-line),
 #boardNavDesktop, #boardNavDesktopFoot,
 .postingMode,
 .boardBanner,
-.navLinks,
+.navLinks:not(.navlink-catalog),
 #postForm,
+.pagelist .prev, .pagelist .next, .pages.cataloglink,
 .center, .ad-plea,
 .bottomCtrl,
 #absbot,
@@ -40,20 +47,12 @@ hr:not(#unread-line),
   display: none;
 }
 
-/*
-  http://www.paulirish.com/2012/box-sizing-border-box-ftw/
-*/
-
 *,
 ::before,
 ::after {
   -moz-box-sizing: border-box;
        box-sizing: border-box;
 }
-
-/*
-  https://github.com/h5bp/html5-boilerplate/commit/1d320b59a390041f25cf87d790f6472a25a512ef
-*/
 
 ::-moz-selection {
   background: #b3d4fc;
@@ -63,28 +62,18 @@ hr:not(#unread-line),
   background: #b3d4fc;
 }
 
-/*
-  Now, normally you redefine the :focus style. I'm not.
-  !important needed because Stylish.
-*/
-
 :focus {
   outline: 0 !important;
 }
 
 html {
-  font: 1em/1.5 sans-serif;
+  font: 300 1em/1.5 source sans pro, open sans, sans-serif;
   color: #3d3d3d;
-  background-color: #fafafa;
+  background-color: #fefefe;
+  text-rendering: optimizeLegibility;
   overflow-y: scroll;
-  /*
-  word-break: break-all;
-  word-wrap: break-word;
-  -webkit-hyphens: auto;
-     -moz-hyphens: auto;
-          hyphens: auto;
-  */
   min-height: 100%;
+  transition: color .25s, background-color .25s;
 }
 
 body {
@@ -92,54 +81,28 @@ body {
   min-height: 100%;
 }
 
-/*
-  !important needed because Stylish.
-*/
-
 a {
-  color: #1e90ff !important;
+  color: #4285f4 !important;
   text-decoration: none !important;
 }
-
-/*
-  Normalise font-weight across browsers and
-  ensure the right weight is chosen, not a
-  faux-bold which looks icky.
-*/
 
 b,
 strong,
 .name,
 .subject,
 .current {
-  font-weight: 700;
+  font-weight: 400;
 }
-
-/*
-  Remove default margin on blockquotes.
-*/
 
 blockquote {
-  margin: .5em 0 0 .5em;
+  margin: .5em;
 }
-
-/*
-  Correct font family set oddly in Chrome,
-  and set tripcodes to a monospace font
-  while we're at it.
-*/
 
 pre,
 .postertrip {
-  font-family: monospace;
+  font-family: source code pro, inconsolata, monospace;
   font-size: 1em;
 }
-
-/*
-  [code] code tags for /g/ and others [/code].
-  Also improve readability of pre-formatted
-  text in all browsers.
-*/
 
 pre {
   /*
@@ -157,46 +120,9 @@ pre {
   */
 }
 
-/*
-  Since we block the default 4chan styles,
-  we then need to style the prettyprint! So,
-  this one is pretty cool. Feel free to pick
-  another style from the site and replace this
-  section to suit your preference.
-  
-  I chose Tomorrow Night Eighties;
-  http://jmblog.github.io/color-themes-for-google-code-prettify/
-*/
-
-.prettyprint .str { color: #9c9; }
-.prettyprint .com { color: #999; }
-.prettyprint .atv { color: #6cc; }
-.prettyprint .typ,
-.prettyprint .fun { color: #69c; }
-.prettyprint .kwd { color: #c9c; }
-.prettyprint .lit,
-.prettyprint .atn,
-.prettyprint .dec { color: #f99157; }
-.prettyprint .pun,
-.prettyprint .opn,
-.prettyprint .clo { color: #ccc; }
-.prettyprint .tag,
-.prettyprint .var { color: #f2777a; }
-
-/*
-  Remove the gap between images and the
-  bottom of their containers: h5bp.com/i/440
-*/
-
 img {
   vertical-align: middle;
 }
-
-/*
-  Correct font-family, font-size and colour
-  inheritance, and remove different margins.
-  !important for 4 of themm, because Stylish.
-*/
 
 button,
 input,
@@ -204,26 +130,11 @@ select,
 textarea {
   font-family: inherit !important;
   font-size: 100% !important;
+  font-weight: inherit !important;
   color: inherit !important;
   line-height: inherit !important;
   margin: 0;
 }
-
-/*
-  Firefox messes with the line-height apparently.
-  !important because Stylish.
-  (this fix included in the CSS above)
-*/
-/*
-button,
-input {
-  line-height: normal !important;
-}
-*/
-
-/*
-  Improve usability and consistency for buttons.
-*/
 
 button,
 html input[type=button],
@@ -236,73 +147,48 @@ html input[disabled] {
   cursor: default;
 }
 
-/*
-  Remove inner padding and border in Firefox.
-*/
-
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
 
-/*
-  Improve readability and alignment, along with
-  vertical resizing only.
-*/
-
 textarea {
   vertical-align: top;
   resize: vertical;
 }
 
-/*
-  Here, we clearfix posts to prevent collapsing.
-  http://nicolasgallagher.com/micro-clearfix-hack/
-*/
-
-/*
-::after {
-  content: '';
-  display: table;
-  clear: both;
-}
-*/
-
-.postContainer::after {
+.postContainer::after,
+.post::after {
   content: '';
   display: table;
   clear: both;
 }
 
 .board {
-  max-width: 960px;
+  max-width: 1080px;
+  padding: 0 2rem;
   margin: auto;
-  position: relative;
 }
 
 .thread {
-  position: relative;
+  margin: 1em 0;
 }
 
 .postContainer {
-  background-color: #fafafa;
-  padding: .75em 1.5em;
   position: relative;
+  margin: 1.5rem 0;
 }
 
-.summary,
-.menu-button,
-.hide-thread-button,
-.hide-reply-button {
-  position: absolute;
-  right: 0;
-  z-index: 2;
+.subject:not(:empty)::after {
+  content: ' by ';
+  font-weight: 300;
+  color: #999;
 }
 
 .fileThumb {
   float: left;
-  margin: .5em .5em .5em 0;
+  margin: .5em;
 }
 
 .fileInfo,
@@ -311,67 +197,396 @@ textarea {
   color: #999;
 }
 
+/*
+  Turn 'No.' into '#' for post numbers.
+*/
+
+.postNum > a:first-child {
+  font-size: 0;
+  color: transparent;
+}
+
+.postNum > a:first-child::before {
+  content: '#';
+  font-size: 1rem;
+}
+
 .quote {
-  color: olive;
+  color: #5f9654;
+}
+
+.view-thread {
+  text-transform: lowercase;
+  background-color: #4285f4;
+  color: #fefefe !important;
+  padding: .25rem .5rem;
+}
+
+#unread-line {
+  border: 0;
+  margin: 0;
+  height: 1px;
+  background: #3cb371;
+}
+
+.fileInfo {
+  font-size: .75rem;
+  margin-top: .1rem;
+}
+
+.fileText > a {
+  display: inline-block;
+  max-width: 720px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: top;
+}
+
+.fileText:hover > a {
+  max-width: 100%;
+}
+
+.file > .fileInfo > a {
+  opacity: 0;
+  transition: opacity .25s;
+}
+
+.file:hover > .fileInfo > a {
+  opacity: 1;
+}
+
+.container:not(:empty) {
+  font-size: .75rem;
+  color: #999;
+  display: block;
+  margin-left: 1rem;
+}
+
+.container:not(:empty)::before {
+  content: 'quoted by: ';
+}
+
+.container .backlink:not(:only-child):not(:nth-last-child(2)):not(:last-child)::after {
+  content: ', ';
+  color: #999;
+}
+
+.container .backlink:last-child:not(:only-child)::before {
+  content: ' and ';
+  color: #999;
+}
+
+.container:not(:empty)::after {
+  content: '.';
+}
+
+.hide-thread-button::before,
+.hide-reply-button::before {
+  font-family: FontAwesome;
+  font-size: 1rem;
+  content: '\e802';
+  color: transparent;
+  line-height: 1;
+  display: inline-block;
+  position: absolute;
+  top: 1rem;
+  right: 4rem;
+  transition: color .25s;
+}
+
+.hide-thread-button span,
+.hide-reply-button span,
+.stub ~ *,
+.menu-button i {
+  display: none;
+}
+
+a.menu-button {
+  font-size: 0;
+  color: transparent !important;
+}
+
+a.menu-button::before {
+  font-family: FontAwesome;
+  font-size: 1rem;
+  content: '\e800';
+  color: transparent;
+  line-height: 1;
+  display: inline-block;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  transition: color .25s;
+}
+
+.postContainer:hover .hide-thread-button::before,
+.postContainer:hover .hide-reply-button::before,
+.postContainer:hover a.menu-button::before {
+  color: #3d3d3d;
+}
+
+#menu {
+    border-bottom: 0 none;
+    display: flex;
+    flex-direction: column;
+    margin: 2px 0;
+    outline: medium none;
+    position: absolute;
+}
+#menu.top {
+    top: 100%;
+}
+#menu.bottom {
+    bottom: 100%;
+}
+#menu.left {
+    left: 0;
+}
+#menu.right {
+    right: 0;
+}
+.entry {
+    cursor: pointer;
+    outline: medium none;
+    padding: 3px 7px;
+    position: relative;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.entry.disabled {
+    color: graytext !important;
+}
+.entry.has-submenu {
+    padding-right: 20px;
+}
+.has-submenu:after {
+    border-bottom: 4px solid transparent;
+    border-left: 6px solid;
+    border-top: 4px solid transparent;
+    content: "";
+    display: inline-block;
+    margin: 4px;
+    position: absolute;
+    right: 3px;
+}
+.has-submenu:not(.focused) > .submenu {
+    display: none;
+}
+.submenu {
+    border-bottom: 0 none;
+    display: flex;
+    flex-direction: column;
+    margin: -1px 0;
+    position: absolute;
+}
+.submenu.top {
+    top: 0;
+}
+.submenu.bottom {
+    bottom: 0;
+}
+.submenu.left {
+    left: 100%;
+}
+.submenu.right {
+    right: 100%;
+}
+.entry input {
+    margin: 0;
 }
 
 /*
-  4chan X Specific CSS
+
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fefefe;
+  border-bottom: 1px solid rgba(171, 171, 171, .5);
+  transition: all .25s;
+  -moz-user-select: none;
+       user-select: none;
+  z-index: 2;
+}
+
+#header:hover {
+  background-color: rgba(254, 254, 254, .5);
+  border-bottom-color: rgba(171, 171, 171, .25)
+}
+
+#header-bar {
+  color: #ababab;
+  padding: .25rem 2rem .5rem;
+}
+
+#header:hover #header-bar {
+  color: rgba(171, 171, 171, .5);
+}
+
+#header:hover #board-list a {
+  color: rgba(66, 133, 244, .5) !important;
+}
+
+#header:hover #board-list a:hover {
+  color: rgba(66, 133, 244, 1) !important;
+}
+*/
+/*
+#board-list a {
+  font-size: 1rem;
+  color: #fefefe !important;
+  background: rgba(66, 133, 244, 1);
+  padding: .251rem 1rem .5rem;
+}
+*/
+/*
+.navlink-catalog {
+  font-size: 0;
+  color: transparent;
+}
+
+.in-thread .navlink-catalog a:not(:nth-child(2)),
+.navlink-catalog #search-btn, .navlink-catalog #search-cnt {
+  display: none;
+}
+
+.navlink-catalog > a::before {
+  content: "\e018";
+  font-family: 'Linecons';
+  font-size: 1.5rem;
+  color: #3d3d3d;
+  position: fixed;
+  z-index: 3;
+  top: .35rem;
+  right: 3rem;
+  line-height: 1;
+  opacity: 1;
+  transition: opacity .25s;
+}
+
+.navlink-catalog > a:hover::before {
+  opacity: .75;
+}
+*/
+/*
+.on-index .navlink-catalog > a:first-child {
+  display: block;
+  height: 1rem;
+  width: 1rem;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpERjQ5QUU2RjNEMjA2ODExODhDNkNCNjMxRDc2RjgxMiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo1OTBDODdEMjJGNkIxMUUyOERFOTgyRDM3RTA1OTdGOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo1OTBDODdEMTJGNkIxMUUyOERFOTgyRDM3RTA1OTdGOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgTWFjaW50b3NoIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MDk4MDExNzQwNzIwNjgxMThGNjJEQ0UzOTVCQjBGNUYiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6REY0OUFFNkYzRDIwNjgxMTg4QzZDQjYzMUQ3NkY4MTIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz73CzCWAAAA5ElEQVR42mJkYGDYC8SWQHwNiP8C8QUgvgPEK4H4EQMEyAFxOBCrALEBEDMDsRYQH2cEEv8ZcIO5UEPTcClANsAQiEWhtpgBsTeUDwKvgXgrEJ+Cug7EPw8z5D8OVzAjyTFjkYfrQzbgP9TkOiyG10HlkNX+R/YCengQK4fhBV0cLqiGyjHgcwE2f+KVY8IiiBwGyAA9DEjy5yAOAxYkgdtA/BGaFx5BUx4MgNK/HzRPgNj8yCZtR3IqqXg7I1KyheUyeyB2gmI2qPwvIN4HxQeRcu1fPBmRgROId0ExJy5FAAEGADdIYn7EDTaeAAAAAElFTkSuQmCC');
+  font-size: 0;
+  color: transparent;
+  opacity: .25;
+}
 */
 
-.field {
-  color: #696969;
-  border: 1px solid #ababab;
-  padding: .1em;
+.pages {
+  font-size: 0;
+  color: transparent;
+  max-width: 1080px;
+  margin: 0 auto 2rem;
+  display: flex;
+  justify-content: space-between;
 }
 
-.field:hover,
-.field:focus {
-  color: #3d3d3d;
-  border-color: #999;
+.pages:not(.cataloglink) a {
+  font-size: 1rem;
+  color: #3d3d3d !important;
+  display: inline-block;
+  flex: 0 1 auto;
+  background-color: #fafafa;
+  padding: .5rem 1rem;
+  transition: background-color .25s;
 }
 
-.field::-moz-placeholder,
-.field:hover::-moz-placeholder {
-    color: #ababab;
+.pages:not(.cataloglink) strong a,
+.pages a:hover {
+  background-color: #f2f2f2;
 }
 
-/*#sidebar-toggle {
-  content: '';
-  position: fixed;
-  top: 0.25em;
-  left: 0;
-  width: 1em;
-  height: 0.125em;
-  border-top: 0.375em double #000;
-  border-bottom: 0.125em solid #000;
-  cursor: pointer;
-  transition: all .4s;
+/*
+#toggle-header-bar {
+  height: 10px;
+width: 10px;
+background: red;
+position: fixed;
+left: 0;
+top: 0;
 }*/
+/*
+#notifications {
+  height: 0;
+  text-align: center;
+  transform: translateY(.25rem);
+}
+.notification {
+  color: #fefefe;
+  margin: 0 auto .25rem;
+  max-width: 100%;
+  position: relative;
+  transition: all 0.25s;
+  width: 500px;
+}
+.notification.error {
+    background-color: rgba(193, 0, 0, 1);
+}
+.notification.warning {
+    background-color: rgba(193, 116, 0, 1);
+}
+.notification.info {
+    background-color: rgba(0, 129, 193, 1);
+}
+.notification.success {
+    background-color: rgba(51, 193, 0, 1);
+}
+.notification a {
+  color: #fefefe !important;
+}
+.notification > .close {
+    padding: 6px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.message {
+  max-height: 200px;
+  overflow: auto;
+  padding: .25rem 1rem .35rem;
+  width: 100%;
+}
+*/
+
 #sidebar-toggle {
   -moz-box-sizing: content-box;
        box-sizing: content-box;
   content: '';
   position: fixed;
   top: 1rem;
-  left: 1rem;
+  right: 1rem;
   width: 2rem;
   height: .25rem;
   border-top: .75rem double #3d3d3d;
   border-bottom: .25rem solid #3d3d3d;
   cursor: pointer;
+transition: right .5s;
+}
+
+.sidebar-active:root #sidebar-toggle {
+  right: 31em;
 }
 
 #sidebar {
-  width: 400px;
+  width: 30em;
   position: fixed;
   height: 100%;
   background-color: #1b1f41;
   top: 0;
   right: 0;
-  transform: translateX(400px);
-  transition: transform .25s;
-  overflow-y: scroll;
+  transform: translateX(30em);
+  transition: transform .5s;
+  overflow-y: auto;
 }
 
 .sidebar-active:root #sidebar {
@@ -384,19 +599,134 @@ textarea {
 }
 
 .sidebar-active:root #delform {
-  margin-right: 400px;
+  margin-right: 30em;
 }
+.catalog-link::before {
+  /*
+  content: "\e018";
+  font-family: 'Linecons';
+  */
+  font-family: FontAwesome;
+  content: '\e808';
+  font-size: 2rem;
+  color: #fefefe;
+  line-height: 1;
+  display: block;
+  transition: all .25s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25%;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+#chanxsettings::before {
+  /*
+  content: "\e00a";
+  font-family: 'Linecons';
+  */
+  font-family: FontAwesome;
+  content: '\e807';
+  font-size: 2rem;
+  color: #fefefe;
+  line-height: 1;
+  cursor: pointer;
+  display: block;
+  transition: all .25s;
+  position: absolute;
+  top: 0;
+  left: 25%;
+  width: 25%;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+#dams::before {
+  /*
+  content: "\e00e";
+  font-family: 'Linecons';
+  */
+  font-family: FontAwesome;
+  content: '\e805';
+  font-size: 2rem;
+  color: #fefefe;
+  line-height: 1;
+  cursor: pointer;
+  display: block;
+  transition: all .25s;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 25%;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+#parental-mode::before {
+  /*
+  content: "\e013";
+  font-family: 'Linecons';
+  */
+  font-family: FontAwesome;
+  content: '\e806';
+  font-size: 2rem;
+  color: #fefefe;
+  line-height: 1;
+  cursor: pointer;
+  display: block;
+  transition: all .25s;
+  position: absolute;
+  top: 0;
+  left: 75%;
+  width: 25%;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.catalog-link:hover::before,
+#chanxsettings:hover::before,
+.dams:root #dams::before,
+#dams:hover::before,
+#parental-mode:hover::before {
+  background-color: rgba(0,0,0,.1);
+  color: #e3e3e3;
+}
+
+.sidebar-active:root #delform { opacity: .75; }
 
 #header {
   font-size: 0;
   color: transparent;
+  position: absolute;
+  top: 6rem;
+  width: 100%;
 }
 
-#shortcuts { display: none /* for now */ }
+#custom-board-list::before {
+  content: 'Favourites';
+  font-size: 1rem;
+  color: #fefefe;
+  display: block;
+  text-align: center;
+  padding: .5em 0;
+  border-top: 1px solid rgba(0,0,0,.25);
+  border-bottom: 1px solid rgba(0,0,0,.25);
+}
 
-#header a {
+#full-board-list::before {
+  content: 'All Boards';
+  font-size: 1rem;
+  color: #fefefe;
+  display: block;
+  text-align: center;
+  padding: .5em 0;
+  border-bottom: 1px solid rgba(0,0,0,.25);
+}
+
+#board-list a {
   font-size: 1rem !important;
-  color: #d8e8f0 !important;
+  color: #fefefe !important;
   display: block;
   text-align: center;
   padding: .5em 0;
@@ -405,27 +735,281 @@ textarea {
   transition: all .25s;
 }
 
-#header a:hover {
+#board-list a:hover {
   background: #0a1040;
 }
 
+#qr {
+  position: absolute;
+  top: auto !important;
+  left: auto !important;
+  bottom: 0 !important;
+  right: auto !important;
+  width: 100%;
+  padding-left: 1px;
+  padding-right: 1px;
+}
 
+#qr .field {
+  -moz-appearance: none;
+  background-color: #fefefe;
+  border: 0;
+  padding: .25rem;
+  transition: all .25s;
+}
 
+#qr .field::-moz-placeholder,
+#qr .field:hover::-moz-placeholder {
+  color: #ababab;
+}
 
+.field[disabled] {
+  background-color: #ababab;
+  color: #909090;
+}
 
+#qr .persona .field:not(:last-of-type) {
+  margin-right: 1px;
+}
 
+#qr > div:first-child,
+#qr:not(.dump) #dump-list-container {
+  display: none;
+}
 
+#file-n-submit.has-file #qr-no-file,
+#file-n-submit:not(.has-file) #qr-filename,
+#file-n-submit:not(.has-file) #qr-filesize,
+#file-n-submit:not(.has-file) #qr-file-spoiler,
+#file-n-submit:not(.has-file) #qr-filerm,
+#qr-filename:focus ~ #qr-filesize {
+  display: none;
+}
 
+#qr .persona {
+  display: flex;
+}
 
+#qr .persona .field {
+  flex: 1 1 0;
+}
 
+#qr .persona .field:hover,
+#qr .persona .field:focus {
+  flex: 3 1 0;
+}
 
+#qr #dump-button {
+  -moz-appearance: none;
+  background: #cdcdcd;
+  border: 0;
+  padding: 0 .5rem;
+  margin-right: 1px;
+}
 
+#qr #dump-button:hover {
+  background: #bababa;
+}
+/*
+#qr #dump-list-container {
+  -moz-user-select: none;
+       user-select: none;
+  height: 5rem;
+  position: relative;
+}
 
+#qr #dump-list {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  counter-reset: qrpreviews;
+}
 
+#qr #dump-list:hover {
+    bottom: -12px;
+    overflow-x: auto;
+    z-index: 1;
+}
 
+#qr .qr-preview {
+  background-position: 50% 20%;
+  background-size: cover;
+  color: #fefefe;
+  cursor: move;
+  display: inline-block;
+  font-size: .75rem;
+  height: 5rem;
+  margin: 1px;
+  opacity: .5;
+  overflow: hidden;
+  padding: .25rem;
+  position: relative;
+  transition: opacity .25s;
+  vertical-align: top;
+  white-space: pre;
+  width: 5rem;
+}
+*/
+#qr .textarea {
+  margin-top: 1px;
+  position: relative;
+}
 
+#qr textarea {
+  width: 100%;
+  height: 10rem;
+}
 
+#qr #file-n-submit-container {
+  position: relative;
+  height: 36px;
+}
 
+#qr #file-n-submit {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #ababab;
+}
 
+#qr #file-n-submit-container input[type=file] {
+  visibility: hidden;
+}
+
+#qr #file-n-submit input[type=submit] {
+  -moz-appearance: none;
+  background: #cdcdcd;
+  border: 0;
+  order: 1;
+  padding: .25rem .5rem;
+  margin: 1px;
+  margin-right: 0;
+  color: #3d3d3d !important;
+}
+
+#qr #qr-file-button {
+  -moz-appearance: none;
+  background: #cdcdcd;
+  border: 0;
+  padding: .25rem;
+  margin: 1px;
+  margin-left: 0;
+  margin-right: .5rem;
+  color: #3d3d3d !important;
+}
+
+#qr #qr-no-file {
+  cursor: default;
+  flex: 1 1 0;
+}
+
+#qr-filename {
+  -moz-appearance: none;
+  background: none;
+  border: 0;
+  flex: 1 1 0;
+  text-overflow: ellipsis;
+}
+
+#qr-filesize {
+  font-size: .8em;
+}
+
+#qr-filesize:before {
+  content: "(";
+}
+
+#qr-filesize:after {
+  content: ")";
+}
+
+#qr-filerm {
+  color: indianRed !important;
+  margin: 0 .5rem;
+}
+
+#thread-watcher {
+  position: absolute;
+  top: 425px !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  width: 100%;
+}
+
+#thread-watcher > div:first-child {
+  color: #fefefe;
+  padding: .5em 0;
+  text-align: center;
+  border-bottom: 1px solid rgba(0,0,0,.25);
+}
+
+#watched-threads > div {
+  padding: .5rem;
+  border-bottom: 1px solid rgba(0,0,0,.25);
+}
+
+#watched-threads > .current {
+  background-color: rgba(0,0,0,.1);
+}
+
+#watched-threads > div > a {
+  color: #fefefe !important;
+}
+
+#watched-threads > div > a:first-child {
+  color: indianRed /* #cd5c5c */ !important;
+  background-color: transparent;
+  border-radius: 100px;
+  padding: 0 7.5px;
+  display: inline-block;
+  margin: 0 .5em;
+  transition: all .25s;
+}
+
+#watched-threads > div > a:first-child:hover {
+  color: #fefefe !important;
+  background-color: indianRed;
+}
+/*
+#thread-watcher .menu-button, .watcher-toggler { display: inline-block; height: 10px; width: 10px; background: red; }
+*/
+#thread-stats {
+  color: #fefefe;
+  position: absolute;
+  top: auto !important;
+  right: .5rem !important;
+  bottom: 300px !important;
+  left: auto !important;
+}
+
+#updater {
+  color: #fefefe;
+  position: absolute;
+  top: auto !important;
+  right: auto !important;
+  bottom: 300px !important;
+  left: .5rem !important;
+}
+
+#updater > div:not(.move) { display: none; }
+
+#update-status.new {
+  color: lime;
+}
+
+html.dams:root {
+  color: #e3e3e3;
+  background-color: #3d3d3d;
+  transition: color .25s, background-color .25s;
+}
 
 }
