@@ -95,9 +95,11 @@ strong,
 }
 
 blockquote {
-  margin: .5em;
+  margin: .75rem .5rem;
 }
 
+code,
+kbd,
 pre,
 .postertrip {
   font-family: source code pro, inconsolata, monospace;
@@ -172,7 +174,8 @@ textarea {
 }
 
 .thread {
-  margin: 1em 0;
+  position: relative;
+  margin: 2rem 0;
 }
 
 .postContainer {
@@ -256,11 +259,41 @@ textarea {
   opacity: 1;
 }
 
+.summary {
+  font-size: 0;
+  background-color: #fefefe;
+  position: absolute;
+  left: 0;
+  padding: .25rem;
+  top: 3rem;
+}
+
+.dams:root .summary {
+  background-color: #3d3d3d;
+}
+
+.summary span {
+  font-size: .75rem;
+}
+
+.summary span:not(:only-child)::after {
+  content: ' / ';
+}
+
+.summary span:not(:only-child):last-child::after {
+  content: '';
+}
+
 .container:not(:empty) {
   font-size: .75rem;
   color: #999;
   display: block;
   margin-left: 1rem;
+}
+
+.op .container:not(:empty) {
+  position: relative;
+  right: -1rem;
 }
 
 .container:not(:empty)::before {
@@ -305,6 +338,17 @@ textarea {
 a.menu-button {
   font-size: 0;
   color: transparent !important;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.stub {
+  position: relative;
+}
+
+.stub .menu-button {
+  top: 0;
 }
 
 a.menu-button::before {
@@ -314,12 +358,10 @@ a.menu-button::before {
   color: transparent;
   line-height: 1;
   display: inline-block;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
   transition: color .25s;
 }
 
+.stub:hover a.menu-button::before,
 .postContainer:hover .hide-thread-button::before,
 .postContainer:hover .hide-reply-button::before,
 .postContainer:hover a.menu-button::before {
@@ -327,73 +369,105 @@ a.menu-button::before {
 }
 
 #menu {
-    border-bottom: 0 none;
-    display: flex;
-    flex-direction: column;
-    margin: 2px 0;
-    outline: medium none;
-    position: absolute;
+  font-size: .75rem;
+  color: #3d3d3d;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
 }
+
 #menu.top {
-    top: 100%;
+  top: 100%;
 }
+
 #menu.bottom {
-    bottom: 100%;
+  bottom: 100%;
 }
+
 #menu.left {
-    left: 0;
+  left: 0;
 }
+
 #menu.right {
-    right: 0;
+  right: 0;
 }
+
 .entry {
-    cursor: pointer;
-    outline: medium none;
-    padding: 3px 7px;
-    position: relative;
-    text-decoration: none;
-    white-space: nowrap;
+  background-color: #fafafa;
+  cursor: pointer;
+  padding: .25rem .5rem;
+  position: relative;
+  white-space: nowrap;
 }
+
+.entry:hover {
+  background-color: #f2f2f2;
+}
+
 .entry.disabled {
-    color: graytext !important;
+  color: #999;
 }
-.entry.has-submenu {
-    padding-right: 20px;
-}
+
 .has-submenu:after {
-    border-bottom: 4px solid transparent;
-    border-left: 6px solid;
-    border-top: 4px solid transparent;
-    content: "";
-    display: inline-block;
-    margin: 4px;
-    position: absolute;
-    right: 3px;
+  border-bottom: 4px solid transparent;
+  border-left: 6px solid;
+  border-top: 4px solid transparent;
+  content: '';
+  display: inline-block;
+  margin: 4px;
+  position: absolute;
+  right: 3px;
 }
+
 .has-submenu:not(.focused) > .submenu {
-    display: none;
+  display: none;
 }
+
 .submenu {
-    border-bottom: 0 none;
-    display: flex;
-    flex-direction: column;
-    margin: -1px 0;
-    position: absolute;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
 }
+
 .submenu.top {
-    top: 0;
+  top: 0;
 }
+
 .submenu.bottom {
-    bottom: 0;
+  bottom: 0;
 }
+
 .submenu.left {
-    left: 100%;
+  left: 100%;
 }
+
 .submenu.right {
-    right: 100%;
+  right: 100%;
 }
+
 .entry input {
-    margin: 0;
+  margin: 0;
+}
+
+.show-thread-button,
+.show-reply-button {
+  color: #3d3d3d !important;
+  display: block;
+}
+
+.show-thread-button > span,
+.show-reply-button > span {
+  font-size: 0;
+  color: transparent;
+}
+
+.show-thread-button > span::before,
+.show-reply-button > span::before {
+  font-family: FontAwesome;
+  font-size: 1rem;
+  content: '\e801';
+  color: #3d3d3d;
+  margin-right: .5rem;
 }
 
 /*
@@ -695,6 +769,18 @@ transition: right .5s;
 
 .sidebar-active:root #delform { opacity: .75; }
 
+.watcher-toggler.fa-bookmark-o::before {
+  font-family: FontAwesome;
+  content: '\e804';
+  color: indianRed;
+}
+
+.watcher-toggler.fa-bookmark::before {
+  font-family: FontAwesome;
+  content: '\e803';
+  color: indianRed;
+}
+
 #header {
   font-size: 0;
   color: transparent;
@@ -740,6 +826,7 @@ transition: right .5s;
 }
 
 #qr {
+  color: #3d3d3d;
   position: absolute;
   top: auto !important;
   left: auto !important;
@@ -1010,6 +1097,146 @@ html.dams:root {
   color: #e3e3e3;
   background-color: #3d3d3d;
   transition: color .25s, background-color .25s;
+}
+
+#qp {
+  position: fixed;
+  background-color: rgba(254, 254, 254, .9);
+}
+
+#qp .postContainer {
+  padding: .5rem;
+  margin: 0;
+}
+
+#qp img {
+  max-height: 80vh;
+  max-width: 50vw;
+}
+
+.qphl {
+  background: #fafafa;
+  padding: .5rem;
+  margin: -.5rem;
+}
+
+.expanded-image img[data-md5],
+.postContainer:not(.expanded-image) .full-image {
+  display: none;
+}
+
+.expanding {
+  opacity: .5;
+}
+
+.expanded-image {
+  clear: both;
+}
+
+.fit-height:root .full-image {
+  max-height: 100vh;
+}
+
+.fit-width:root .full-image {
+  max-width: 100%;
+}
+
+.gecko.fit-width:root .full-image {
+  width: 100%;
+}
+
+.backlink.inlined {
+  opacity: .5;
+}
+
+#overlay {
+  position: fixed;
+  height: 100%;
+  display: flex;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 5;
+  background: rgba(0,0,0,.5);
+}
+
+#fourchanx-settings {
+  width: 37em;
+  height: 100%;
+  right: 0;
+  top: 0;
+  position: fixed;
+  z-index: 5;
+  background-color: #2a76c1;
+}
+
+#fourchanx-settings nav {
+  height: 100%;
+  width: 7em;
+}
+
+#fourchanx-settings nav .credits {
+  display: none;
+}
+
+.sections-list {
+  font-size: 0;
+  color: transparent;
+}
+
+.sections-list a {
+  font-size: 1rem;
+  color: #3d3d3d !important;
+  display: block;
+  background-color: #438dd7;
+  padding: 1rem;
+}
+
+.sections-list a.tab-selected {
+  font-weight: 400;
+  background-color: #74b6f7;
+}
+
+.sections-list a:not(.tab-selected):hover {
+  background-color: #5ea3e8;
+}
+
+.section-container {
+  font-size: .8rem;
+  background-color: #74b6f7;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30rem;
+  height: 100%;
+  overflow: auto;
+  padding: .5rem;
+}
+
+#fourchanx-settings fieldset {
+  padding: .25rem .5rem;
+  border: 1px solid #438dd7;
+  margin: .5rem 0;
+}
+
+#fourchanx-settings label {
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+#fourchanx-settings .section-keybinds .field {
+  font-family: monospace !important;
+}
+
+#fourchanx-settings .section-filter textarea,
+#fourchanx-settings .section-qr textarea,
+#fourchanx-settings .section-sauce textarea {
+  width: 100%;
+  height: 350px;
+}
+
+.warning {
+  color: indianRed;
 }
 
 }
