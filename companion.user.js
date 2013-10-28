@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name          4chan s
 // @author        saxamaphone69
-// @version       0.3
+// @version       0.4
 // @grant         none
+// @run-at        document-end
 // @include       *://boards.4chan.org/*
 // ==/UserScript==
 
@@ -39,16 +40,18 @@
         scrollHeaderCheck();
         */
         // create a button to remove all the <style> elements
+        /*
         var rmStyleButton = d.createElement('button');
         rmStyleButton.id = 'removestyle';
         rmStyleButton.innerHTML = 'remove styles';
         d.body.appendChild(rmStyleButton);
         d.getElementById('removestyle').onclick = function () {
+        */
             var rmStyles = d.querySelectorAll('style');
             for (var i = 0, j = rmStyles.length; i < j; i++) {
-                rmStyles[i].parentNode.removeChild(rmStyles[i]);
+                rmStyles[i].remove();
             }
-        };
+        // };
         // ensure the first navlink stays so i can style the catalog button
         d.querySelector('.navLinks a[href$="catalog"]').classList.add('catalog-link');
         d.querySelector('.navLinks a[href$="catalog"]').innerHTML = '';
@@ -129,6 +132,20 @@
         d.getElementById('addstyle').onclick = function () {
             addStyle();
         };*/
+        d.onkeyup = function(e) {
+           var tag = e.target.tagName.toLowerCase();
+           if ( e.which === 190 && tag != 'input' && tag != 'textarea')  {
+               if (d.documentElement.classList.contains('sidebar-inactive')) {
+                d.documentElement.classList.remove('sidebar-inactive');
+                d.documentElement.classList.add('sidebar-active');
+            } else {
+                d.documentElement.classList.remove('sidebar-active');
+                d.documentElement.classList.add('sidebar-inactive');
+            }
+               var leQR = d.querySelector('html.sidebar-active #qr');
+               leQR.querySelector('textarea').focus();
+           }
+        };
         // add a sidebar toggler
         var sidebarToggle = d.createElement('div');
         sidebarToggle.id = 'sidebar-toggle';
@@ -150,6 +167,8 @@
         function checkNadd(el) {
             if (el) {
                 Ssidebar.appendChild(el);
+            } else {
+                console.log('woah there, couldn\'t find ' + el + ', sorry about that :(');
             }
         }
         checkNadd(d.getElementById('header'));
@@ -162,6 +181,7 @@
         checkNadd(d.getElementById('dams'));
         checkNadd(d.getElementById('chanxsettings'));
         checkNadd(d.getElementById('parental-mode'));
+        checkNadd(d.getElementById('header'));
     }
     d.addEventListener('DOMContentLoaded', bigBad, false);
-}())
+}());
