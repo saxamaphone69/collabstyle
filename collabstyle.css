@@ -5,9 +5,9 @@
   font from Google's server.
 */
 
-/*
+
 @import url('http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700|Source+Code+Pro:300');
-*/
+
 
 /*
   With a bit of trickery (using Fontello) I'm
@@ -22,15 +22,24 @@
 
 @-moz-document domain("boards.4chan.org") {
 
+/*
+  Might as well style the button we use
+  to hide everything.
+*/
+
 #removestyle {
+  -moz-appearance: none;
   position: fixed;
   bottom: 4rem;
   left: 4rem;
   padding: 1em;
--moz-appearance: none;
-border: 0;
+  border: 0;
   background: #e3e3e3;
 }
+
+/*
+  NOTE: there are some stuff 4chan X hides, we'd hide that here too
+*/
 
 .mobile,
 hr:not(#unread-line),
@@ -47,12 +56,20 @@ hr:not(#unread-line),
   display: none;
 }
 
+/*
+  http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+*/
+
 *,
 ::before,
 ::after {
   -moz-box-sizing: border-box;
        box-sizing: border-box;
 }
+
+/*
+  https://github.com/h5bp/html5-boilerplate/commit/1d320b59a390041f25cf87d790f6472a25a512ef
+*/
 
 ::-moz-selection {
   background: #b3d4fc;
@@ -61,6 +78,11 @@ hr:not(#unread-line),
 ::selection {
   background: #b3d4fc;
 }
+
+/*
+  Now, normally you redefine the :focus style. I'm not.
+  !important needed because Stylish.
+*/
 
 :focus {
   outline: 0 !important;
@@ -72,6 +94,13 @@ html {
   background-color: #fefefe;
   text-rendering: optimizeLegibility;
   overflow-y: scroll;
+  /*
+  word-break: break-all;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+     -moz-hyphens: auto;
+          hyphens: auto;
+  */
   min-height: 100%;
   transition: color .25s, background-color .25s;
 }
@@ -81,10 +110,20 @@ body {
   min-height: 100%;
 }
 
+/*
+  !important needed because Stylish.
+*/
+
 a {
   color: #4285f4 !important;
   text-decoration: none !important;
 }
+
+/*
+  Normalise font-weight across browsers and
+  ensure the right weight is chosen, not a
+  faux-bold which looks icky.
+*/
 
 b,
 strong,
@@ -94,9 +133,21 @@ strong,
   font-weight: 400;
 }
 
+/*
+  Remove default margin on blockquotes and set
+  our own.
+*/
+
 blockquote {
   margin: .75rem .5rem;
 }
+
+
+/*
+  Correct font family set oddly in Chrome,
+  and set tripcodes to a monospace font
+  while we're at it.
+*/
 
 code,
 kbd,
@@ -107,24 +158,61 @@ pre,
 }
 
 pre {
-  /*
   color: #fafafa;
   background-color: #3d3d3d;
-  padding: .5em;
+  padding: .25rem;
   border: 1px solid #2d2d2d;
   margin: 0;
-  */
+  max-width: 100%;
   display: inline-block;
   white-space: pre-wrap;
-  /*
+  
   word-break: break-all;
   word-wrap: break-word;
-  */
+  
 }
+
+/*
+  Since we block the default 4chan styles,
+  we then need to style the prettyprint! So,
+  this one is pretty cool. Feel free to pick
+  another style from the site and replace this
+  section to suit your preference.
+  
+  I chose Tomorrow Night Eighties;
+  http://jmblog.github.io/color-themes-for-google-code-prettify/
+*/
+
+.prettyprint .str { color: #9c9 }
+.prettyprint .com { color: #999 }
+.prettyprint .atv { color: #6cc }
+.prettyprint .typ,
+.prettyprint .fun { color: #69c }
+.prettyprint .kwd { color: #c9c }
+.prettyprint .lit,
+.prettyprint .atn,
+.prettyprint .dec { color: #f99157 }
+.prettyprint .pun,
+.prettyprint .opn,
+.prettyprint .clo { color: #ccc }
+.prettyprint .tag,
+.prettyprint .var { color: #f2777a }
+
+/*
+  Remove the gap between images and the
+  bottom of their containers: h5bp.com/i/440
+*/
 
 img {
   vertical-align: middle;
 }
+
+/*
+  Correct font-family, font-size and colour
+  inheritance, and remove different margins.
+  !important for 4 of them, because Stylish.
+*/
+
 
 button,
 input,
@@ -138,6 +226,10 @@ textarea {
   margin: 0;
 }
 
+/*
+  Improve usability and consistency for buttons.
+*/
+
 button,
 html input[type=button],
 html input[type=submit] {
@@ -149,16 +241,38 @@ html input[disabled] {
   cursor: default;
 }
 
+/*
+  Remove inner padding and border in Firefox.
+*/
+
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
 
+/*
+  Improve readability and alignment, along with
+  vertical resizing only.
+*/
+
 textarea {
   vertical-align: top;
   resize: vertical;
 }
+
+/*
+  Here, we clearfix posts to prevent collapsing.
+  http://nicolasgallagher.com/micro-clearfix-hack/
+*/
+
+/*
+::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+*/
 
 .postContainer::after,
 .post::after {
@@ -168,7 +282,7 @@ textarea {
 }
 
 .board {
-  max-width: 1080px;
+  max-width: 90rem;
   padding: 0 2rem;
   margin: auto;
 }
@@ -182,6 +296,11 @@ textarea {
   position: relative;
   margin: 1.5rem 0;
 }
+
+/*
+  Style subjects to display like:
+  "Desktop Thread ' by ' Anonymous".
+*/
 
 .subject:not(:empty)::after {
   content: ' by ';
@@ -200,6 +319,10 @@ textarea {
   color: #999;
 }
 
+.deleted-post {
+  opacity: .5;
+}
+
 /*
   Turn 'No.' into '#' for post numbers.
 */
@@ -214,8 +337,16 @@ textarea {
   font-size: 1rem;
 }
 
+/*
+  >le green text meme arrow
+*/
+
 .quote {
   color: #5f9654;
+}
+
+.parental-mode img[data-md5] {
+  opacity: .25;
 }
 
 .view-thread {
@@ -224,6 +355,10 @@ textarea {
   color: #fefefe !important;
   padding: .25rem .5rem;
 }
+
+/*
+  4chan X Unread Line
+*/
 
 #unread-line {
   border: 0;
@@ -1120,8 +1255,8 @@ html.dams:root {
   margin: -.5rem;
 }
 
-.expanded-image img[data-md5],
-.postContainer:not(.expanded-image) .full-image {
+.expanded-image > .post > .file > .fileThumb > img[data-md5],
+.postContainer:not(.expanded-image) > .post > .file > .fileThumb > .full-image {
   display: none;
 }
 
@@ -1145,8 +1280,19 @@ html.dams:root {
   width: 100%;
 }
 
-.backlink.inlined {
+.inlined {
   opacity: .5;
+}
+
+.inlined + .inline {
+  clear: both;
+}
+
+.inline + br { display: none; }
+
+.inline .postContainer {
+  background-color: #f2f2f2;
+  margin: .1rem 0;
 }
 
 #overlay {
@@ -1168,6 +1314,14 @@ html.dams:root {
   position: fixed;
   z-index: 5;
   background-color: #2a76c1;
+  animation: .25s ease-in-out 100ms normal forwards 1 moveIn;
+  transform: translateX(37em);
+}
+
+@-moz-keyframes moveIn {
+  100% {
+    transform: translateX(0);
+  }
 }
 
 #fourchanx-settings nav {
@@ -1237,6 +1391,10 @@ html.dams:root {
 
 .warning {
   color: indianRed;
+}
+
+.forwardlink {
+  border-bottom: 1px dashed;
 }
 
 }
