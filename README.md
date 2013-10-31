@@ -7,7 +7,7 @@ this is an attempt at creating a *super sexy* 4chan userstyle with [@offlineric]
 
 atm this is __SUPER ALPHA VERSION 0.000002__ where it's more just eric and i experimenting with ideas (some on his own fork).
 
-__cool, gimme gimme gimme!!!___
+__cool, gimme gimme gimme!!!__
 
 for this style to work as intended, i recommend blocking the default stylesheets. how? through adblock plus, add this custom filter:
 
