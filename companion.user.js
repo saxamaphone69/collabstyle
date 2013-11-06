@@ -1,145 +1,151 @@
 // ==UserScript==
 // @name          4chan sidedish
 // @author        saxamaphone69
-// @version       0.5
+// @version       0.6
 // @grant         none
+// #run-at        document-start
 // @include       *://boards.4chan.org/*
 // ==/UserScript==
-
+/*
 (function () {
     'use strict';
-    var d = document;
-    function init() {
-        /*
-        function scrollHeaderCheck() {
-		var lst = 0, st, direction;
-		function detectDirection() {
-		st = window.pageYOffset;
-		if (st > lst) {
-		direction = 'down';
-		d.documentElement.classList.remove('up');
-		d.documentElement.classList.add('down');
-		} else {
-		direction = 'up';
-		d.documentElement.classList.remove('down');
-		d.documentElement.classList.add('up');
-		}
-		lst = st;
-		return direction;
-		}
-		window.onscroll = function scroll() {
-		var dir = detectDirection();
-		console.log(dir);
-		d.documentElement.classList.add(dir);
-		}
-		};
-		scrollHeaderCheck();
-		*/
-        // Remove all the <style> elements from the document.
-        var rmStyles = d.querySelectorAll('style');
-        for (var i = 0, j = rmStyles.length; i < j; i++) {
-            rmStyles[i].remove();
+    var d = document,
+        doc = d.documentElement;
+    function init () {
+        if (doc.classList.contains('index-loading')) {
+            console.log('ITS HERE');
         }
-        // Ensure the first .navLink stays so I can style the Catalog link.
-        d.querySelector('.navLinks a[href$="catalog"]').classList.add('catalog-link');
-        d.querySelector('.navLinks a[href$="catalog"]').innerHTML = '';
-        // Wrap the numbers in the .summary with a <span> tag.
-        var stylin = d.querySelectorAll('.summary');
-        for (var i = 0, j = stylin.length; i < j; i++) {
-            var styleContent = stylin[i].textContent;
-            var newContent = styleContent.replace(/(\d+)/g, '<span>$1</span>');
-            stylin[i].innerHTML = newContent;
+    }
+    new MutationObserver(init).observe(doc, {
+        attributes: true,
+        attributeFilter: ['class']
+    });
+})();
+*/
+(function() {
+    'use strict';
+    var d = document,
+        doc = d.documentElement,
+        body = d.body;
+    doc.classList.add('chanx-loading');
+    doc.classList.add('sidebar-inactive');
+    var getID = function(id) {
+        return d.getElementById(id);
+    };
+    function main() {
+        var styles = d.querySelectorAll('style'),
+            catalogLink = d.querySelector('.navLinks a[href$="catalog"]');
+        for (var i = 0, j = styles.length; i < j; i++) {
+            styles[i].remove();
         }
-        // Add a class to <html>, depending if we're on the index or not.
-        if (location.pathname.split('/')[2] != 'res') {
-            d.documentElement.classList.add('on-index');
-        } else {
-            d.documentElement.classList.add('in-thread');
+        catalogLink.classList.add('catalog-link');
+        catalogLink.classList.add('sidedish-icon');
+        catalogLink.innerHTML = '';
+        function createElement(el, tag, id, cl) {
+            var el = d.createElement(tag);
+            el.id = id;
+            if (cl) {
+               el.classList.add(cl);
+            } else {
+            }
+            body.appendChild(el);
         }
-        // Add an image opacity toggler.
-        var parentalMode = d.createElement('div');
-        parentalMode.id = 'parental-mode';
-        d.body.appendChild(parentalMode);
-        document.getElementById('parental-mode').onclick = function () {
-            d.documentElement.classList.toggle('parental-mode');
+        createElement('sidebarToggle', 'div', 'sidebar-toggle');
+        createElement('sidebar', 'div', 'sidebar');
+        createElement('dams', 'div', 'dams', 'sidedish-icon');
+        createElement('parentalMode', 'div', 'parental-mode', 'sidedish-icon');
+        createElement('chanxsettings', 'div', 'chanxsettings', 'sidedish-icon');
+        var Ssidebar = getID('sidebar');
+        Ssidebar.appendChild(getID('dams'));
+        Ssidebar.appendChild(getID('parental-mode'));
+        Ssidebar.appendChild(getID('chanxsettings'));
+        getID('dams').onclick = function() {
+            doc.classList.toggle('dams');
         };
-        // Add a 'Dark As My Soul' toggler.
-        var dams = d.createElement('div');
-        dams.id = 'dams';
-        d.body.appendChild(dams);
-        document.getElementById('dams').onclick = function () {
-            d.documentElement.classList.toggle('dams');
+        getID('parental-mode').onclick = function() {
+            doc.classList.toggle('parental-mode');
         };
-        // Add a button to open the 4chan X settings.
-        var chanxsettings = d.createElement('div');
-        chanxsettings.id = 'chanxsettings';
-        d.body.appendChild(chanxsettings);
-        document.getElementById('chanxsettings').onclick = function () {
+        getID('chanxsettings').onclick = function() {
             d.dispatchEvent(new CustomEvent('OpenSettings'));
         };
-        // Change [Reply] to View for styling purposes.
-        var replytoview = d.querySelectorAll('.postNum > span');
-        for (var i = 0, j = replytoview.length; i < j; i++) {
-            var replytoviewlink = replytoview[i].querySelector('a').href;
-            replytoview[i].innerHTML = '<a class="view-thread" href="' + replytoviewlink + '">View</a>';
-        }
-        // Upon pressing '.', the sidebar will activate and automatically focus the QR.
+        getID('sidebar-toggle').onclick = function() {
+            if (doc.classList.contains('sidebar-inactive')) {
+                doc.classList.remove('sidebar-inactive');
+                doc.classList.add('sidebar-active');
+            } else {
+                doc.classList.remove('sidebar-active');
+                doc.classList.add('sidebar-inactive');
+            }
+        };
         d.onkeyup = function (e) {
             var tag = e.target.tagName.toLowerCase();
             if (e.which === 190 && tag != 'input' && tag != 'textarea') {
-                if (d.documentElement.classList.contains('sidebar-inactive')) {
-                    d.documentElement.classList.remove('sidebar-inactive');
-                    d.documentElement.classList.add('sidebar-active');
+                if (doc.classList.contains('sidebar-inactive')) {
+                    doc.classList.remove('sidebar-inactive');
+                    doc.classList.add('sidebar-active');
                 } else {
-                    d.documentElement.classList.remove('sidebar-active');
-                    d.documentElement.classList.add('sidebar-inactive');
+                    doc.classList.remove('sidebar-active');
+                    doc.classList.add('sidebar-inactive');
                 }
                 var leQR = d.querySelector('html.sidebar-active #qr');
                 leQR.querySelector('textarea').focus();
             }
         };
-        // Add a sidebar toggler.
-        var sidebarToggle = d.createElement('div');
-        sidebarToggle.id = 'sidebar-toggle';
-        d.body.appendChild(sidebarToggle);
-        d.documentElement.classList.add('sidebar-inactive');
-        // Create a sidebar.
-        var sidebar = d.createElement('div');
-        sidebar.id = 'sidebar';
-        d.body.appendChild(sidebar);
-        d.getElementById('sidebar-toggle').onclick = function () {
-            if (d.documentElement.classList.contains('sidebar-inactive')) {
-                d.documentElement.classList.remove('sidebar-inactive');
-                d.documentElement.classList.add('sidebar-active');
-            } else {
-                d.documentElement.classList.remove('sidebar-active');
-                d.documentElement.classList.add('sidebar-inactive');
-            }
-        };
-        // Get that newly created sidebar...
-        var Ssidebar = d.getElementById('sidebar');
-        function checkNadd(el) {
-            if (el) {
-                Ssidebar.appendChild(el);
-            } /*else {
-		        setTimeout(function() {
-		        Ssidebar.appendChild(el);
-		    }, 100);
-		};*/
-        }
-        // then add everything to it. There must be a better way to do this....
-        checkNadd(d.getElementById('qr'));
-        checkNadd(d.getElementById('updater'));
-        checkNadd(d.getElementById('thread-stats'));
-        checkNadd(d.getElementById('thread-watcher'));
-        checkNadd(d.getElementById('thread-watcher'));
-        checkNadd(d.querySelector('.navLinks a[href$="catalog"]'));
-        checkNadd(d.getElementById('dams'));
-        checkNadd(d.getElementById('chanxsettings'));
-        checkNadd(d.getElementById('parental-mode'));
-        checkNadd(d.getElementById('header'));
-        // Seriously that's fucking gross.
     }
-    d.addEventListener('DOMContentLoaded', init, false);
-}());
-// document.addEventListener('4chanXInitFinished', function(){ alert('we loaded, now') }, false);
+    function reShuffle() {
+       var Ssidebar;
+       function check() {
+          var checkExist = setInterval(function() {
+             if (d.getElementById('sidebar')) {
+                Ssidebar = d.getElementById('sidebar');
+                //console.log('The sidebar is finally here!');
+                clearInterval(checkExist);
+             }
+          }, 100);
+       }
+       check();
+       function checkNadd(el) {
+          var checkExist = setInterval(function() {
+             var elid = el.id;
+             if (el) {
+                Ssidebar.appendChild(el);
+                //console.log(elid + ' was added to the sidebar!');
+                clearInterval(checkExist);
+             } //else {
+             //   console.log(elid + ' wasn\'t there!');
+             //}
+          }, 100);
+       }
+       checkNadd(getID('header'));
+       checkNadd(getID('qr'));
+       checkNadd(getID('updater'));
+       checkNadd(getID('thread-stats'));
+       checkNadd(getID('thread-watcher'));
+       checkNadd(d.querySelector('.catalog-link'));
+       // These 3 no longer work...
+       //checkNadd(getID('dams'));
+       //checkNadd(getID('chanxsettings'));
+       //checkNadd(getID('parental-mode'));
+    }
+    function reHTML() {
+       var replytoviews = d.querySelectorAll('.postNum > span');
+       var summaries = d.querySelectorAll('.summary');
+       [].forEach.call(replytoviews, function(replytoview) {
+           var replyLink = replytoview.querySelector('a').href;
+           replytoview.innerHTML = '<a class="view-thread" href="' + replyLink + '">View</a>';
+       });
+       [].forEach.call(summaries, function(summary) {
+           var summaryContent = summary.textContent;
+           var newContent = summaryContent.replace(/(\d+)/g, '<span>$1</span>');
+           summary.innerHTML = newContent;
+       });
+    }
+    function pls() {
+        // WHY DON'T YOU WORK ALL THE TIME
+        doc.classList.remove('chanx-loading');
+    }
+    d.addEventListener('DOMContentLoaded', main, false);
+    d.addEventListener('4chanXInitFinished', reShuffle, false);
+    d.addEventListener('IndexRefresh', pls, false);
+    d.addEventListener('IndexRefresh', setTimeout(reHTML, 2000), false);
+})();
