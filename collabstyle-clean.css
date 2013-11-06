@@ -1,0 +1,789 @@
+/*\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
+  collabstyle - 
+    An aesthetically pleasing 4chan userstyle
+
+  created by - 
+    Johnny Karanikolas a.k.a.
+    Saxamaphone !3.saxN0DHY
+
+  released under the CC 3.0 license - 
+    http://creativecommons.org/licenses/by/3.0/
+
+  information, bug reports and what have you - 
+    https://github.com/saxamaphone69/collabstyle
+
+  shout outs - 
+    https://4chan-x.just-believe.in/
+    the prefered version of 4chan X, maintained
+    by !MayhemxaEo / @MayhemYDG
+        
+    seaweed, zixaphir, kweeb, ahoka, anesif,
+    joe, hdni, aeosynth, rideag, myson, eric,
+    phallus, queue and any other members of
+    the userstyle brigade also deserve a
+    mention for being awesome
+    
+\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\*/
+
+/*
+  When we @import using Stylish, we have to
+  have it outside the @-moz-document rule. In
+  this case, we are loading the "Source Sans"
+  font from Google's server.
+*/
+/*
+@import url('http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700|Source+Code+Pro:300');
+*/
+/*
+  With a bit of trickery (using Fontello) I'm
+  able to create a web-icon font with only
+  the icons I need from the Font Awesome series.
+*/
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('data:application/font-woff;base64,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') format('woff');
+}
+
+@-moz-document domain("boards.4chan.org") {
+
+/*
+  Colour List:
+  'Black' : #3d3d3d / rgba(61, 61, 61, 1);
+  'Grey1' : #e3e3e3 / rgba(227, 227, 227, 1);
+  'Grey2' : #999 / rgba(153, 153, 153, 1);
+  'Grey3' : #f2f2f2 / rgba(242, 242, 242, 1);
+  'White' : #fefefe / rgba(254, 254, 254, 1);
+  'Selection' : #b3d4fc / rgba(179, 212, 252, 1);
+  'Blue' : #4285f4 / rgba(66, 133, 244, 1);
+  'Implication' : #5f9654 / rgba(95, 150, 84, 1);
+*/
+
+/*
+  Hide all the crap this style doesn't use.
+  This list is a bit longer than usual because along with
+  the default Yotsuba styles, we also block 4chan X's
+  styling.
+  This list includes, in order:
+   - mobile styles
+   - horizontal lines (excluding the unread line)
+   - original board navigations
+   - posting mode: reply
+   - board title and banner
+   - quick links
+   - original post form
+   - page buttons
+   - ads and pleas
+   - style changer and post deleter (use the 4chan X menu)
+   - copyright text in footer
+   - checkboxes for posts (use the 4chan X menu)
+
+*/
+
+.mobile,
+hr:not(#unread-line),
+#boardNavDesktop, #boardNavDesktopFoot,
+.postingMode,
+.boardBanner,
+.navLinks:not(.navlink-catalog),
+#postForm,
+.pagelist .prev, .pagelist .next, .pages.cataloglink,
+.center, .ad-plea,
+.bottomCtrl,
+#absbot,
+.postInfo > input[value=delete] {
+  display: none;
+}
+
+/*
+  http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+*/
+
+*,
+::before,
+::after {
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
+}
+
+/*
+  https://github.com/h5bp/html5-boilerplate/commit/1d320b59a390041f25cf87d790f6472a25a512ef
+*/
+
+::-moz-selection {
+  background: #b3d4fc;
+}
+
+::selection {
+  background: #b3d4fc;
+}
+
+/*
+  Now, normally you redefine the :focus style. I'm not.
+  !important needed because Stylish.
+*/
+
+:focus {
+  outline: 0 !important;
+}
+
+html {
+  font: 300 1em/1.5 'Source Sans Pro', 'Open Sans', 'Helvetica', 'Arial', sans-serif;
+  color: #3d3d3d;
+  background-color: #fefefe;
+  overflow-y: scroll;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  /*
+  word-break: break-all;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+     -moz-hyphens: auto;
+          hyphens: auto;
+  */
+  min-height: 100%;
+  transition: color .25s, background-color .25s;
+}
+
+html.dams:root {
+  color: #e3e3e3;
+  background-color: #3d3d3d;
+  transition: color .25s, background-color .25s;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+/*
+  !important needed because Stylish.
+*/
+
+a {
+  color: #4285f4 !important;
+  text-decoration: none !important;
+}
+
+/*
+  Normalise font-weight across browsers and
+  ensure the right weight is chosen, not a
+  faux-bold which looks icky.
+*/
+
+b,
+strong,
+.name,
+.subject,
+.current {
+  font-weight: 400;
+}
+
+/*
+  Remove default margin on blockquotes and set
+  our own.
+*/
+
+blockquote {
+  margin: .75rem .5rem;
+}
+
+/*
+  Correct font family set oddly in Chrome,
+  and set tripcodes to a monospace font
+  while we're at it.
+*/
+
+code,
+kbd,
+pre,
+.postertrip {
+  font-family: 'Source Code Pro', 'Inconsolata', monospace;
+  font-size: 1em;
+}
+
+/*
+  [code] code tags for /g/ and others [/code]
+  TUH-DUH: Sometimes people exploit this and the
+  overflow-x goes crazy. Maybe a way with CSS to
+  fix this?
+*/
+
+pre {
+  color: #fefefe;
+  background-color: #3d3d3d;
+  padding: .25rem;
+  border: 1px solid #2d2d2d;
+  margin: 0;
+  max-width: 100%;
+  display: inline-block;
+  white-space: pre-wrap;
+  
+  word-break: break-all;
+  word-wrap: break-word;
+  
+}
+
+/*
+  Since we block the default 4chan styles,
+  we then need to style the prettyprint! So,
+  this one is pretty cool. Feel free to pick
+  another style from the site and replace this
+  section to suit your preference.
+  
+  I chose Tomorrow Night Eighties;
+  http://jmblog.github.io/color-themes-for-google-code-prettify/
+*/
+
+.prettyprint .str { color: #9c9 }
+.prettyprint .com { color: #999 }
+.prettyprint .atv { color: #6cc }
+.prettyprint .typ,
+.prettyprint .fun { color: #69c }
+.prettyprint .kwd { color: #c9c }
+.prettyprint .lit,
+.prettyprint .atn,
+.prettyprint .dec { color: #f99157 }
+.prettyprint .pun,
+.prettyprint .opn,
+.prettyprint .clo { color: #ccc }
+.prettyprint .tag,
+.prettyprint .var { color: #f2777a }
+
+/*
+  Remove the gap between images and the
+  bottom of their containers: h5bp.com/i/440
+*/
+
+img {
+  vertical-align: middle;
+}
+
+/*
+  Correct font-family, font-size and colour
+  inheritance, and remove different margins.
+  !important for 4 of them, because Stylish.
+*/
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit !important;
+  font-size: 100% !important;
+  font-weight: inherit !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  margin: 0;
+}
+
+/*
+  Improve usability and consistency for buttons.
+*/
+
+button,
+html input[type=button],
+html input[type=submit] {
+  cursor: pointer;
+}
+
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/*
+  Remove inner padding and border in Firefox.
+*/
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/*
+  Improve readability and alignment, along with
+  vertical resizing only.
+*/
+
+textarea {
+  vertical-align: top;
+  resize: vertical;
+}
+
+/*
+  [spoiler] ur a faget [/spoiler]
+  This was taken from 4chan's CSS.
+  It needs to be tested upon selection, hover, quote and linkified.
+  TUH-DUH: Test [spoiler]
+*/
+
+/*
+  <s>
+    <span class="quote">tfw</span>
+    <br>
+    normal
+  </s>
+*/
+
+s,
+s a:not(:hover) {
+  text-decoration: none;
+  background-color: #3d3d3d;
+  transition: color .25s;
+}
+
+s:hover,
+s:hover a {
+  color: #fefefe;
+}
+
+/*
+  >implying
+  >le green text meme arrow
+*/
+
+.quote {
+  color: #5f9654;
+}
+
+/*
+  Here, we clearfix elements to prevent collapsing.
+  http://nicolasgallagher.com/micro-clearfix-hack/
+  ::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+*/
+
+.board::after,
+.thread::after,
+.postContainer::after,
+.post::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.board,
+.thread,
+.postContainer {
+  position: relative;
+}
+
+/*
+  TUH-DUH: Sort your fucking margins out, kid
+*/
+
+.board {
+  max-width: 90rem;
+  padding: 0 2rem;
+  margin: auto;
+}
+
+.thread {
+}
+
+.postContainer {
+}
+
+.post {
+}
+
+/*
+  Style subjects to display like:
+  'Desktop Thread by Anonymous'.
+*/
+
+.subject:not(:empty)::after {
+  content: ' by ';
+  font-weight: 300;
+  color: #999;
+}
+
+/*
+  Give file information, 'Comment too long...'
+  and the post time a grey colour.
+*/
+
+.fileInfo,
+.abbr,
+.dateTime {
+  color: #999;
+}
+
+/*
+  Turn 'No.' into '#' for post numbers.
+*/
+
+.postNum > a:first-child {
+  font-size: 0;
+  color: transparent;
+}
+
+.postNum > a:first-child::before {
+  content: '#';
+  font-size: 1rem;
+}
+
+/*
+  [Reply], turned [View].
+*/
+
+.view-thread {
+  color: #fefefe !important;
+  background-color: #4285f4;
+  padding: .25rem .5rem;
+  /*
+  padding: .2em .5em .25em;
+  display: inline-block;
+  vertical-align: baseline;
+  */
+  transition: background-color .25s;
+}
+
+.view-thread:hover {
+  background-color: #1a78d3;
+}
+
+/*
+  Page list. Thank fuck for flexbox.
+  By that I mean, it doesn't matter if the
+  board has 15 pages or 5, it will automatically
+  sort itself out in terms of width and spacing.
+  Although, because I font-size: 0; the
+  surrounding '[' and ']', I get left with
+  some spacing issues.
+  TUH-DUH:
+   - Perhaps style the mobile page list instead?
+   - Does this even work in Chrome?
+   - DAMS styling
+*/
+
+.pages {
+  font-size: 0;
+  color: transparent;
+  max-width: 67.5rem;
+  margin: 0 auto 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pages:not(.cataloglink) a {
+  font-size: 1rem;
+  color: #3d3d3d !important;
+  display: inline-block;
+  flex: 0 1 auto;
+  background-color: #fafafa;
+  padding: .5rem 1rem;
+  transition: background-color .25s;
+}
+
+.pages:not(.cataloglink) strong a,
+.pages a:hover {
+  background-color: #f2f2f2;
+}
+
+/*
+  File thumbnails and anything to do with
+  images, expanded or not.
+*/
+
+.fileInfo {
+ font-size: .75rem;
+  margin-top: .1rem;
+}
+
+.fileText > a {
+  display: inline-block;
+  max-width: 720px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: top;
+}
+
+.fileText:hover > a {
+  max-width: 100%;
+}
+
+.file > .fileInfo > a {
+  opacity: 0;
+  transition: opacity .25s;
+}
+
+.file:hover > .fileInfo > a {
+  opacity: 1;
+}
+
+.fileThumb {
+  float: left;
+  margin: .5em;
+  transition: opacity .25s;
+}
+
+html.parental-mode:root img[data-md5] {
+  opacity: .25;
+}
+
+.watcher-toggler::before {
+  font-family: FontAwesome;
+  color: indianRed;
+}
+
+.watcher-toggler.fa-bookmark-o::before {
+  content: '\e804';
+}
+
+.watcher-toggler.fa-bookmark::before {
+  content: '\e803';
+}
+
+/*
+  Any element that is tucked away into the sidebar
+  will have it's styling applied here.
+*/
+
+#sidebar-toggle {
+  -moz-box-sizing: content-box;
+       box-sizing: content-box;
+  content: '';
+  position: fixed;
+  top: 2rem;
+  right: 1rem;
+  width: 2rem;
+  height: .25rem;
+  border-top: .75rem double #3d3d3d;
+  border-bottom: .25rem solid #3d3d3d;
+  cursor: pointer;
+  transition: right .5s;
+}
+
+.dams:root #sidebar-toggle {
+  border-top-color: #1d1d1d;
+  border-bottom-color: #1d1d1d;
+}
+
+.sidebar-active:root #sidebar-toggle {
+  right: 31em;
+}
+
+#delform {
+  margin-right: 0;
+  transition: all .5s;
+}
+
+.sidebar-active:root #delform {
+  opacity: .75;
+  margin-right: 30em;
+}
+
+#sidebar {
+  color: #fefefe;
+  width: 30em;
+  position: fixed;
+  height: 100%;
+  background-color: /*#2c3e50*/#3d3d3d;
+  top: 0;
+  right: 0;
+  transform: translateX(30em);
+  transition: transform .5s;
+}
+
+.dams:root #sidebar {
+  color: #e3e3e3;
+  background-color: #1d1d1d;
+}
+
+.sidebar-active:root #sidebar {
+  transform: translateX(0);
+}
+
+.sidedish-icon::before,
+.fa-refresh::before {
+  font-family: FontAwesome;
+  font-size: 2rem;
+  color: #fefefe;
+  line-height: 1;
+  display: block;
+  cursor: pointer;
+  transition: all .25s;
+  position: absolute;
+  top: 0;
+  width: 20%;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.fa-refresh::before {
+  content: '\e80c';
+  left: 0;
+}
+
+.fa-refresh.fa-spin::before {
+  background: none;
+  transition: none;
+  animation: 2s linear 0s normal none infinite spin;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+
+.catalog-link::before {
+  content: '\e808';
+  left: 20%;
+}
+
+#chanxsettings::before {
+  content: '\e807';
+  left: 40%;
+}
+
+#dams::before {
+  content: '\e805';
+  left: 60%;
+}
+
+#parental-mode::before {
+  content: '\e806';
+  left: 80%;
+}
+
+.sidedish-icon:hover::before,
+.fa-refresh:hover::before,
+.dams:root #dams::before,
+.parental-mode:root #parental-mode::before {
+  color: #e3e3e3;
+  background-color: rgba(0, 0, 0, .1);
+}
+
+.fa-refreshfa-spin:hover::before {
+  transition: none;
+  background: none;
+}
+
+#header {
+  margin-top: 6rem;
+  width: 100%;
+}
+
+#toggle-header-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 1rem;
+  height: 0;
+}
+
+#board-list {
+  font-size: 0;
+  color: transparent;
+  display: block;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+#custom-board-list::before {
+  content: 'Favourites';
+  font-size: 1rem;
+  color: #fefefe;
+  display: block;
+  text-align: center;
+  padding: .5em 0;
+  border-top: 1px solid rgba(0, 0, 0, .25);
+  border-bottom: 1px solid rgba(0, 0, 0, .25);
+}
+
+#full-board-list::before {
+  content: 'All Boards';
+  font-size: 1rem;
+  color: #fefefe;
+  display: block;
+  text-align: center;
+  padding: .5em 0;
+  border-top: 1px solid rgba(0, 0, 0, .25);
+  border-bottom: 1px solid rgba(0, 0, 0, .25);
+}
+
+#board-list a {
+  font-size: 1rem !important;
+  color: #fefefe !important;
+  display: block;
+  text-align: center;
+  padding: .5rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, .25);
+}
+
+#board-list .current,
+#board-list a:hover {
+  background-color: rgba(0, 0, 0, .1);
+}
+
+#thread-watcher {
+  width: 100%;
+}
+
+#thread-watcher > div:first-child {
+  padding: .5rem 0;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, .25);
+}
+
+#thread-watcher #watched-threads > div {
+  border-bottom: 1px solid rgba(0, 0, 0, .25);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#thread-watcher #watched-threads .dead-thread a[title] {
+  text-decoration: line-through !important;
+  opacity: .8;
+}
+
+#thread-watcher #watched-threads > div:hover,
+#thread-watcher #watched-threads > .current {
+  background-color: rgba(0, 0, 0, .1);
+}
+
+#thread-watcher #watched-threads > div > a {
+  color: #fefefe !important;
+}
+
+#thread-watcher #watched-threads > div > a:first-child {
+  color: indianRed /* #cd5c5c */ !important;
+  background-color: transparent;
+  border-radius: 100px;
+  line-height: 1.6rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  text-align: center;
+  display: block;
+  transition: all .25s;
+  position: absolute;
+  margin-top: .5rem;
+  margin-left: .5rem;
+}
+
+#thread-watcher #watched-threads > div > a:first-child:hover {
+  color: #fefefe !important;
+  background-color: indianRed;
+}
+
+#thread-watcher #watched-threads > div > a:not(:first-child) {
+  display: block;
+  padding: .5rem .5rem .6rem 2.5rem;
+}
+
+#qr, #thread-stats, #updater { display: none; }
+
+}
