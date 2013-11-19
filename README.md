@@ -5,7 +5,7 @@ __cool, so what is this?__
 
 this is an attempt at creating a *super sexy* 4chan userstyle with [@offlineric](https://github.com/offlineric)!
 
-atm this is __SUPER ALPHA VERSION 0.000002__ where it's more just eric and i experimenting with ideas (some on his own fork).
+atm this is __SUPER ALPHA VERSION 0.000002__, where it's more just eric and i experimenting with ideas [(some on his own fork)](https://github.com/offlineric/collabstyle).
 
 __cool, gimme gimme gimme!!!__
 
@@ -15,8 +15,11 @@ for this style to work as intended, i recommend blocking the default stylesheets
 
 ```
 *//static.4chan.org/image/title/*
-$stylesheet,domain=boards.4chan.org
+$stylesheet,domain=boards.4chan.org [snail]
+*//pixel.quantserve.com/*
 ```
+
+you will also need [mayhem's LATEST 4chan X version](https://github.com/MayhemYDG/4chan-x/wiki/4chan-X-LATEST).
 
 here is a quick preview:
 
