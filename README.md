@@ -14,8 +14,8 @@ for this style to work as intended, i recommend blocking the default stylesheets
 (add-ons > adblock > options > filter preferences > custom filters tab)
 
 ```
-*//static.4chan.org/image/title/*
-$stylesheet,domain=boards.4chan.org [snail]
+*//s.4cdn.org/image/title/*
+*//s.4cdn.org/css/*
 *//pixel.quantserve.com/*
 ```
 
