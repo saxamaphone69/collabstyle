@@ -16,6 +16,7 @@ for this style to work as intended, i recommend blocking the default stylesheets
 ```
 *//s.4cdn.org/image/title/*
 *//s.4cdn.org/css/*
+*//s.4cdn.org/js/prettify/prettify.*.css
 *//pixel.quantserve.com/*
 ```
 
